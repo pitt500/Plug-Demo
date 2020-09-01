@@ -34,6 +34,7 @@ class ListCampaignViewController: UIViewController {
     
     collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
     view.addSubview(collectionView)
+    collectionView.backgroundColor = .white
     collectionView.register(ListCampaignCell.self, forCellWithReuseIdentifier: "cellContainer")
     collectionView.dataSource = self
   }
