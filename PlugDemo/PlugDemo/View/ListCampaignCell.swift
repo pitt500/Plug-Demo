@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ListCampaignCell.swift
 //  PlugDemo
 //
 //  Created by projas on 8/31/20.
@@ -7,10 +7,7 @@
 
 import UIKit
 
-class CampaignViewController: UIViewController {
-  
-  let service: CampaignOperation = CampaignService()
-  
+class ListCampaignCell: UICollectionViewCell {
   let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     let padding: CGFloat = 4
@@ -23,33 +20,28 @@ class CampaignViewController: UIViewController {
     return collection
   }()
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.backgroundColor = .white
-    
-//    service.getFeed { result in
-//      switch result {
-//      case .success(let campaigns):
-//        print(campaigns)
-//      case .failure(let error):
-//        print(error)
-//      }
-//    }
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .white
     setConstraints()
     configureCollectionView()
   }
-
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
 }
 
-extension CampaignViewController {
+extension ListCampaignCell {
   func setConstraints() {
-    view.addSubview(collectionView)
+    addSubview(collectionView)
     
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      self.view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: collectionView.topAnchor),
-      self.view.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
-      self.view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
+      safeAreaLayoutGuide.topAnchor.constraint(equalTo: collectionView.topAnchor),
+      safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
+      safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
       
       collectionView.heightAnchor.constraint(equalToConstant: 260)
     ])
@@ -61,7 +53,7 @@ extension CampaignViewController {
   }
 }
 
-extension CampaignViewController: UICollectionViewDataSource {
+extension ListCampaignCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 5
   }
@@ -73,4 +65,3 @@ extension CampaignViewController: UICollectionViewDataSource {
   
   
 }
-
