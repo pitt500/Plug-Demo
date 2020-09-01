@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CampaignViewController: UIViewController {
   
   let service: CampaignOperation = CampaignService()
   
