@@ -8,10 +8,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+  
+  let service: CampaignOperation = CampaignService()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .green
+    
+    service.getFeed { campaign in
+      print(campaign)
+    } failure: { error in
+      print(error)
+    }
+
   }
 
 
