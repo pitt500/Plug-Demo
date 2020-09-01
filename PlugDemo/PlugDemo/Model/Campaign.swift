@@ -8,7 +8,7 @@
 import Foundation
 
 struct Campaign: Codable {
-  let id: String
+  let id: Int
   let campaignName: String
   let campaignIconUrl: String
   let payPerInstall: String
