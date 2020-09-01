@@ -14,6 +14,8 @@ class ListCampaignViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    title = "PLUGS"
+    navigationController?.navigationBar.prefersLargeTitles = true
     configureCollectionView()
     
     //    service.getFeed { result in
