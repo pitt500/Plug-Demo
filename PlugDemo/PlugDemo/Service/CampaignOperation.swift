@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CampaignOperation {
-  func getFeed(completion: @escaping ([Campaign]) -> Void, failure: @escaping (Error) -> Void) 
+  func getFeed(result: @escaping (Result<[Campaign], Error>) -> Void)
 }

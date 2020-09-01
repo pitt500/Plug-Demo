@@ -15,12 +15,14 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .green
     
-    service.getFeed { campaign in
-      print(campaign)
-    } failure: { error in
-      print(error)
+    service.getFeed { result in
+      switch result {
+      case .success(let campaigns):
+        print(campaigns)
+      case .failure(let error):
+        print(error)
+      }
     }
-
   }
 
 
