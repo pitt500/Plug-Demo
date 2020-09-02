@@ -43,8 +43,7 @@ class CampaignCell: UICollectionViewCell {
   }
   
   var downloadView: UIView {
-    let view = UIView()
-    view.backgroundColor = .white
+    let view = DownloadView()
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }
