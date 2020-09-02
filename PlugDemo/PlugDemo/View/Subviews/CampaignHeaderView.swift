@@ -21,7 +21,8 @@ class CampaignHeaderView: UIView {
     let stack = UIStackView()
     stack.axis = .vertical
     stack.spacing = 4
-    stack.distribution = .fillEqually
+    stack.distribution = .fillProportionally
+    stack.isBaselineRelativeArrangement = true
     stack.translatesAutoresizingMaskIntoConstraints = false
     return stack
   }()
