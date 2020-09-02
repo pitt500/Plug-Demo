@@ -11,6 +11,7 @@
 		B507602F24FE1FDE00D873C9 /* ListCampaignCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B507602E24FE1FDE00D873C9 /* ListCampaignCell.swift */; };
 		B51966C824FF6695006ADB93 /* CampaignHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51966C724FF6695006ADB93 /* CampaignHeaderView.swift */; };
 		B51966CC24FF70EC006ADB93 /* UIView+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51966CB24FF70EC006ADB93 /* UIView+Corners.swift */; };
+		B51966CE24FF734D006ADB93 /* TrackingLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51966CD24FF734D006ADB93 /* TrackingLinkView.swift */; };
 		B529EDE924FDFC6600FF8FBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDE824FDFC6600FF8FBD /* AppDelegate.swift */; };
 		B529EDEB24FDFC6600FF8FBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDEA24FDFC6600FF8FBD /* SceneDelegate.swift */; };
 		B529EDF224FDFC6700FF8FBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B529EDF124FDFC6700FF8FBD /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		B507602E24FE1FDE00D873C9 /* ListCampaignCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCampaignCell.swift; sourceTree = "<group>"; };
 		B51966C724FF6695006ADB93 /* CampaignHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignHeaderView.swift; sourceTree = "<group>"; };
 		B51966CB24FF70EC006ADB93 /* UIView+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Corners.swift"; sourceTree = "<group>"; };
+		B51966CD24FF734D006ADB93 /* TrackingLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingLinkView.swift; sourceTree = "<group>"; };
 		B529EDE524FDFC6600FF8FBD /* PlugDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlugDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B529EDE824FDFC6600FF8FBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B529EDEA24FDFC6600FF8FBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				B51966C724FF6695006ADB93 /* CampaignHeaderView.swift */,
+				B51966CD24FF734D006ADB93 /* TrackingLinkView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				B529EE0124FDFE8700FF8FBD /* Campaign.swift in Sources */,
 				B529EDEB24FDFC6600FF8FBD /* SceneDelegate.swift in Sources */,
 				B51966C824FF6695006ADB93 /* CampaignHeaderView.swift in Sources */,
+				B51966CE24FF734D006ADB93 /* TrackingLinkView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

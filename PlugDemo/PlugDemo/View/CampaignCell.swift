@@ -37,8 +37,7 @@ class CampaignCell: UICollectionViewCell {
   }()
   
   var trackingLinkView: UIView {
-    let view = UIView()
-    view.backgroundColor = .white
+    let view = TrackingLinkView()
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }
