@@ -39,12 +39,14 @@ class CampaignCell: UICollectionViewCell {
   var trackingLinkView: UIView {
     let view = TrackingLinkView()
     view.translatesAutoresizingMaskIntoConstraints = false
+    view.border(width: 0.5, color: UIColor.lightGray.withAlphaComponent(0.6))
     return view
   }
   
   var downloadView: UIView {
     let view = DownloadView()
     view.translatesAutoresizingMaskIntoConstraints = false
+    view.border(width: 0.5, color: UIColor.lightGray.withAlphaComponent(0.6))
     return view
   }
   
@@ -66,7 +68,7 @@ extension CampaignCell {
     vStackView.addArrangedSubview(hStackView)
     hStackView.addArrangedSubview(trackingLinkView)
     hStackView.addArrangedSubview(downloadView)
-    
+
     NSLayoutConstraint.activate([
       topAnchor.constraint(equalTo: vStackView.topAnchor),
       bottomAnchor.constraint(equalTo: vStackView.bottomAnchor),
