@@ -90,6 +90,7 @@ class CampaignHeaderView: UIView {
     vStackView.addArrangedSubview(campaignTitleLabel)
     vStackView.addArrangedSubview(campaignDescriptionLabel)
     
+    //Add space between vStack and hStack
     vStackView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
     vStackView.isLayoutMarginsRelativeArrangement = true
     
