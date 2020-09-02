@@ -29,7 +29,10 @@ class CampaignHeaderView: UIView {
   
   private var campaignImage: UIImageView = {
     let image = UIImage(systemName: "star.fill")!
+    image.withRenderingMode(.alwaysTemplate)
+    
     let imageView = UIImageView(image: image)
+    imageView.tintColor = .systemGray
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.contentMode = .scaleAspectFit
     
