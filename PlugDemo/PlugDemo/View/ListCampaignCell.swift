@@ -22,8 +22,7 @@ class ListCampaignCell: UICollectionViewCell {
   }()
   
   let headerView: UIView = {
-    let view = UIView()
-    view.backgroundColor = .black
+    let view = CampaignHeaderView()
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
