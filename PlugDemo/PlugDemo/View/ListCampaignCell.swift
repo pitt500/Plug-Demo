@@ -17,7 +17,15 @@ class ListCampaignCell: UICollectionViewCell {
     
     let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collection.backgroundColor = .brown
+    collection.translatesAutoresizingMaskIntoConstraints = false
     return collection
+  }()
+  
+  let headerView: UIView = {
+    let view = UIView()
+    view.backgroundColor = .black
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
   }()
   
   override init(frame: CGRect) {
@@ -35,11 +43,16 @@ class ListCampaignCell: UICollectionViewCell {
 
 extension ListCampaignCell {
   func setConstraints() {
+    addSubview(headerView)
     addSubview(collectionView)
     
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      safeAreaLayoutGuide.topAnchor.constraint(equalTo: collectionView.topAnchor),
+      safeAreaLayoutGuide.topAnchor.constraint(equalTo: headerView.topAnchor),
+      safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
+      safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+      headerView.heightAnchor.constraint(equalToConstant: 100),
+      
+      collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
       safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
       safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
       

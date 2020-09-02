@@ -31,7 +31,7 @@ class ListCampaignViewController: UIViewController {
   func configureCollectionView() {
     let layout = UICollectionViewFlowLayout()
     let width = self.view.bounds.width
-    layout.itemSize = CGSize(width: width, height: 260)
+    layout.itemSize = CGSize(width: width, height: 370)
     layout.scrollDirection = .vertical
     
     collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
