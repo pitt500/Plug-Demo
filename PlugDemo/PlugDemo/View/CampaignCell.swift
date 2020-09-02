@@ -20,7 +20,6 @@ class CampaignCell: UICollectionViewCell {
     let stack = UIStackView()
     stack.axis = .horizontal
     stack.distribution = .fillEqually
-    stack.spacing = 4
     stack.translatesAutoresizingMaskIntoConstraints = false
     return stack
   }()
