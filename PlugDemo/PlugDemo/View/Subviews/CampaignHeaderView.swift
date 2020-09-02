@@ -33,6 +33,8 @@ class CampaignHeaderView: UIView {
     let imageView = UIImageView(image: image)
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.contentMode = .scaleAspectFit
+    imageView.border(width: 1, color: UIColor.lightGray.withAlphaComponent(0.6))
+    imageView.roundCorners(to: 6)
     
     return imageView
   }()
