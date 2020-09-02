@@ -48,8 +48,8 @@ extension ListCampaignCell {
     
     NSLayoutConstraint.activate([
       safeAreaLayoutGuide.topAnchor.constraint(equalTo: headerView.topAnchor),
-      safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: headerView.leadingAnchor),
-      safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
+      safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: -4),
+      safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: 4),
       headerView.heightAnchor.constraint(equalToConstant: 100),
       
       collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
