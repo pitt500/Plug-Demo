@@ -90,6 +90,8 @@ class CampaignHeaderView: UIView {
     vStackView.addArrangedSubview(campaignTitleLabel)
     vStackView.addArrangedSubview(campaignDescriptionLabel)
     
+    vStackView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+    vStackView.isLayoutMarginsRelativeArrangement = true
     
     NSLayoutConstraint.activate([
       topAnchor.constraint(equalTo: hStackView.topAnchor),
