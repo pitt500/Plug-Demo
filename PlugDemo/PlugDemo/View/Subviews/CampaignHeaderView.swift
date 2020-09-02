@@ -38,13 +38,34 @@ class CampaignHeaderView: UIView {
   private var campaignTitleLabel: UILabel = {
     let label = UILabel()
     label.text = "Yarn"
+    label.font = UIFont(name: "HelveticaNeue-Bold", size: 25)!
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
   
   private var campaignDescriptionLabel: UILabel = {
     let label = UILabel()
-    label.text = "8.2 per install"
+    let text = NSMutableAttributedString()
+    
+    text.append(
+      NSAttributedString(
+        string: "8.2",
+        attributes: [
+          .font: UIFont(name: "HelveticaNeue-Bold", size: 20)!,
+          .foregroundColor: UIColor.systemGreen
+        ]
+      )
+    )
+    text.append(
+      NSAttributedString(
+        string: " per install",
+        attributes: [
+          .font: UIFont(name: "HelveticaNeue", size: 20)!,
+          .foregroundColor: UIColor.systemGreen
+        ]
+      )
+    )
+    label.attributedText = text
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
@@ -72,6 +93,7 @@ class CampaignHeaderView: UIView {
       leadingAnchor.constraint(equalTo: hStackView.leadingAnchor),
       trailingAnchor.constraint(equalTo: hStackView.trailingAnchor),
       
+      //1:1 Aspect ratio
       campaignImage.widthAnchor.constraint(equalTo: campaignImage.heightAnchor)
     ])
   }
