@@ -13,6 +13,7 @@
 		B51966CC24FF70EC006ADB93 /* UIView+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51966CB24FF70EC006ADB93 /* UIView+Corners.swift */; };
 		B51966CE24FF734D006ADB93 /* TrackingLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51966CD24FF734D006ADB93 /* TrackingLinkView.swift */; };
 		B51966D024FF767D006ADB93 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51966CF24FF767D006ADB93 /* DownloadView.swift */; };
+		B51966D224FF7BCC006ADB93 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51966D124FF7BCC006ADB93 /* MediaView.swift */; };
 		B529EDE924FDFC6600FF8FBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDE824FDFC6600FF8FBD /* AppDelegate.swift */; };
 		B529EDEB24FDFC6600FF8FBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EDEA24FDFC6600FF8FBD /* SceneDelegate.swift */; };
 		B529EDF224FDFC6700FF8FBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B529EDF124FDFC6700FF8FBD /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		B51966CB24FF70EC006ADB93 /* UIView+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Corners.swift"; sourceTree = "<group>"; };
 		B51966CD24FF734D006ADB93 /* TrackingLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingLinkView.swift; sourceTree = "<group>"; };
 		B51966CF24FF767D006ADB93 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		B51966D124FF7BCC006ADB93 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		B529EDE524FDFC6600FF8FBD /* PlugDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlugDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B529EDE824FDFC6600FF8FBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B529EDEA24FDFC6600FF8FBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				B51966C724FF6695006ADB93 /* CampaignHeaderView.swift */,
 				B51966CD24FF734D006ADB93 /* TrackingLinkView.swift */,
 				B51966CF24FF767D006ADB93 /* DownloadView.swift */,
+				B51966D124FF7BCC006ADB93 /* MediaView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				B529EE0724FE028900FF8FBD /* NetworkError.swift in Sources */,
 				B529EE0C24FE075B00FF8FBD /* CampaignCell.swift in Sources */,
 				B529EE0924FE045A00FF8FBD /* CampaignResponse.swift in Sources */,
+				B51966D224FF7BCC006ADB93 /* MediaView.swift in Sources */,
 				B529EDFE24FDFE7500FF8FBD /* CampaignService.swift in Sources */,
 				B507602D24FE1DE000D873C9 /* ListCampaignViewController.swift in Sources */,
 				B529EE0324FDFEA400FF8FBD /* Media.swift in Sources */,

@@ -28,8 +28,7 @@ class CampaignCell: UICollectionViewCell {
   }()
   
   var mediaView: UIView = {
-    let view = UIView()
-    view.backgroundColor = .red
+    let view = MediaView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.border(width: 1, color: UIColor.lightGray.withAlphaComponent(0.6))
     view.roundCorners(to: 6)
