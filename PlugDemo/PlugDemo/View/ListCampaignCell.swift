@@ -16,13 +16,14 @@ class ListCampaignCell: UICollectionViewCell {
     layout.scrollDirection = .horizontal
     
     let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collection.backgroundColor = .brown
+    collection.backgroundColor = .white
     collection.translatesAutoresizingMaskIntoConstraints = false
     return collection
   }()
   
   let headerView: UIView = {
     let view = CampaignHeaderView()
+
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()

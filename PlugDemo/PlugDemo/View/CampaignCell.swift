@@ -21,6 +21,9 @@ class CampaignCell: UICollectionViewCell {
     stack.axis = .horizontal
     stack.distribution = .fillEqually
     stack.translatesAutoresizingMaskIntoConstraints = false
+    stack.backgroundColor = .white
+    stack.border(width: 1, color: UIColor.lightGray.withAlphaComponent(0.6))
+    stack.roundCorners(to: 6)
     return stack
   }()
   
@@ -28,19 +31,21 @@ class CampaignCell: UICollectionViewCell {
     let view = UIView()
     view.backgroundColor = .red
     view.translatesAutoresizingMaskIntoConstraints = false
+    view.border(width: 1, color: UIColor.lightGray.withAlphaComponent(0.6))
+    view.roundCorners(to: 6)
     return view
   }()
   
   var trackingLinkView: UIView {
     let view = UIView()
-    view.backgroundColor = .green
+    view.backgroundColor = .white
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }
   
   var downloadView: UIView {
     let view = UIView()
-    view.backgroundColor = .blue
+    view.backgroundColor = .white
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }
