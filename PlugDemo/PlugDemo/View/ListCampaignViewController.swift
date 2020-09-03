@@ -71,5 +71,6 @@ extension ListCampaignViewController: UICollectionViewDataSource {
 extension ListCampaignViewController: CampaignInteraction {
   func didTapMedia(_ media: Media) {
     print(media.downloadUrl)
+    present(CampaignMediaDetailViewController(media: media), animated: true, completion: nil)
   }
 }
