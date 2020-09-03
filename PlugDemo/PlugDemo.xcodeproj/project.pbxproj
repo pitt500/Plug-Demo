@@ -25,6 +25,7 @@
 		B529EE0724FE028900FF8FBD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EE0624FE028900FF8FBD /* NetworkError.swift */; };
 		B529EE0924FE045A00FF8FBD /* CampaignResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EE0824FE045A00FF8FBD /* CampaignResponse.swift */; };
 		B529EE0C24FE075B00FF8FBD /* CampaignCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EE0B24FE075B00FF8FBD /* CampaignCell.swift */; };
+		B5A39F762500BC34004D5D57 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A39F752500BC34004D5D57 /* NetworkOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B529EE0624FE028900FF8FBD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B529EE0824FE045A00FF8FBD /* CampaignResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignResponse.swift; sourceTree = "<group>"; };
 		B529EE0B24FE075B00FF8FBD /* CampaignCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignCell.swift; sourceTree = "<group>"; };
+		B5A39F752500BC34004D5D57 /* NetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				B529EDFD24FDFE7500FF8FBD /* CampaignService.swift */,
 				B529EE0424FE00A900FF8FBD /* CampaignOperation.swift */,
 				B529EE0624FE028900FF8FBD /* NetworkError.swift */,
+				B5A39F752500BC34004D5D57 /* NetworkOperation.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				B529EDEB24FDFC6600FF8FBD /* SceneDelegate.swift in Sources */,
 				B51966C824FF6695006ADB93 /* CampaignHeaderView.swift in Sources */,
 				B51966CE24FF734D006ADB93 /* TrackingLinkView.swift in Sources */,
+				B5A39F762500BC34004D5D57 /* NetworkOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
