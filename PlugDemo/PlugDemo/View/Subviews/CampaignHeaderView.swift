@@ -28,7 +28,7 @@ class CampaignHeaderView: UIView {
   }()
   
   var campaignImage: UIImageView = {
-    let image = UIImage(named: "tiktok_icon")!
+    let image = UIImage(named: "imagePlaceholder")!
     
     let imageView = UIImageView(image: image)
     imageView.translatesAutoresizingMaskIntoConstraints = false
