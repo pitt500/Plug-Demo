@@ -17,6 +17,13 @@ class MediaView: UIView {
     return view
   }()
   
+  var playerButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    
+    return button
+  }()
+  
   var playerImageView: UIImageView = {
     let view = UIImageView()
     view.image = UIImage(systemName: "play.fill")
@@ -41,6 +48,7 @@ class MediaView: UIView {
   private func configureView() {
     addSubview(imageView)
     addSubview(playerImageView)
+    addSubview(playerButton)
     
     NSLayoutConstraint.activate([
       topAnchor.constraint(equalTo: imageView.topAnchor),
@@ -51,7 +59,12 @@ class MediaView: UIView {
       centerYAnchor.constraint(equalTo: playerImageView.centerYAnchor),
       centerXAnchor.constraint(equalTo: playerImageView.centerXAnchor),
       playerImageView.heightAnchor.constraint(equalTo: playerImageView.widthAnchor),
-      playerImageView.widthAnchor.constraint(equalToConstant: 40)
+      playerImageView.widthAnchor.constraint(equalToConstant: 40),
+      
+      playerButton.topAnchor.constraint(equalTo: playerImageView.topAnchor),
+      playerButton.leadingAnchor.constraint(equalTo: playerImageView.leadingAnchor),
+      playerButton.trailingAnchor.constraint(equalTo: playerImageView.trailingAnchor),
+      playerButton.bottomAnchor.constraint(equalTo: playerImageView.bottomAnchor),
       
     ])
   }
