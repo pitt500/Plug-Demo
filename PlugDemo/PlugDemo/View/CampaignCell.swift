@@ -58,6 +58,9 @@ class CampaignCell: UICollectionViewCell {
     return view
   }
   
+  weak var delegate: CampaignInteraction?
+  var media: Media!
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     setConstraints()
@@ -67,7 +70,12 @@ class CampaignCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func configure(with media: Media) {
+  func configure(with media: Media, delegate: CampaignInteraction?) {
+    self.delegate = delegate
+    self.media = media
+    
+    self.mediaView.playerButton.addTarget(self, action: #selector(CampaignCell.buttonTapped), for: .touchUpInside)
+    
     CampaignService.shared.downloadImage(from: media.coverPhotoUrl) { [weak self] image in
       guard let self = self else { return }
       
@@ -83,6 +91,10 @@ class CampaignCell: UICollectionViewCell {
         }
       }
     }
+  }
+  
+  @objc func buttonTapped() {
+    delegate?.didTapMedia(media)
   }
   
 }
@@ -109,4 +121,8 @@ extension CampaignCell {
       vStackView.trailingAnchor.constraint(equalTo: mediaView.trailingAnchor),
     ])
   }
+}
+
+protocol CampaignInteraction: AnyObject {
+  func didTapMedia(_ media: Media)
 }

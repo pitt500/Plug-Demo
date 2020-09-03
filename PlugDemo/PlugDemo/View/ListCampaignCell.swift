@@ -34,6 +34,8 @@ class ListCampaignCell: UICollectionViewCell {
     }
   }
   
+  weak var delegate: CampaignInteraction?
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = .white
@@ -45,7 +47,8 @@ class ListCampaignCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func configure(with campaign: Campaign) {
+  func configure(with campaign: Campaign, delegate: CampaignInteraction?) {
+    self.delegate = delegate
     headerView.campaignTitleLabel.text = campaign.campaignName
     headerView.campaignDescriptionLabel.attributedText = setCampaignDescription(campaign)
     self.media = campaign.medias
@@ -118,7 +121,7 @@ extension ListCampaignCell: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CampaignCell
-    cell.configure(with: media[indexPath.row])
+    cell.configure(with: media[indexPath.row], delegate: delegate)
     return cell
   }
   

@@ -63,7 +63,13 @@ extension ListCampaignViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellContainer", for: indexPath) as! ListCampaignCell
-    cell.configure(with: campaigns[indexPath.row])
+    cell.configure(with: campaigns[indexPath.row], delegate: self)
     return cell
+  }
+}
+
+extension ListCampaignViewController: CampaignInteraction {
+  func didTapMedia(_ media: Media) {
+    print(media.downloadUrl)
   }
 }
