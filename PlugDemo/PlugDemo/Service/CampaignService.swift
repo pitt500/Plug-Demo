@@ -65,7 +65,7 @@ extension CampaignService: NetworkOperation {
         completion(nil)
         return
       }
-      print("loading image...")
+
       self.cache.setObject(image, forKey: key)
       completion(image)
     }
