@@ -27,7 +27,7 @@ class CampaignCell: UICollectionViewCell {
     return stack
   }()
   
-  var mediaView: UIView = {
+  var mediaView: MediaView = {
     let view = MediaView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.border(width: 1, color: UIColor.lightGray.withAlphaComponent(0.6))
@@ -35,14 +35,14 @@ class CampaignCell: UICollectionViewCell {
     return view
   }()
   
-  var trackingLinkView: UIView {
+  var trackingLinkView: TrackingLinkView {
     let view = TrackingLinkView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.border(width: 0.5, color: UIColor.lightGray.withAlphaComponent(0.6))
     return view
   }
   
-  var downloadView: UIView {
+  var downloadView: DownloadView {
     let view = DownloadView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.border(width: 0.5, color: UIColor.lightGray.withAlphaComponent(0.6))
