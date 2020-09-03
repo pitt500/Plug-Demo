@@ -41,6 +41,7 @@ class ListCampaignCell: UICollectionViewCell {
   
   func configure(with campaign: Campaign) {
     headerView.campaignTitleLabel.text = campaign.campaignName
+    headerView.campaignDescriptionLabel.attributedText = setCampaignDescription(campaign)
     
     CampaignService.shared.downloadImage(from: campaign.campaignIconUrl, completion: { [weak self] image in
       guard let self = self else { return }
@@ -49,6 +50,33 @@ class ListCampaignCell: UICollectionViewCell {
         self.headerView.campaignImage.image = image
       }
     })
+  }
+  
+  private func setCampaignDescription(_ campaign: Campaign) -> NSAttributedString {
+    let words = campaign.payPerInstall
+    let text = NSMutableAttributedString()
+    
+    text.append(
+      NSAttributedString(
+        string: campaign.payPerInstall,
+        attributes: [
+          .font: UIFont(name: "HelveticaNeue-Bold", size: 20)!,
+          .foregroundColor: UIColor.systemGreen
+        ]
+      )
+    )
+    
+    text.append(
+      NSAttributedString(
+        string: " per install",
+        attributes: [
+          .font: UIFont(name: "HelveticaNeue", size: 20)!,
+          .foregroundColor: UIColor.systemGreen
+        ]
+      )
+    )
+
+    return text
   }
 }
 
