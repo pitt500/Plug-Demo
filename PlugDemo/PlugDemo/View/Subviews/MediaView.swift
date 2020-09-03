@@ -20,7 +20,6 @@ class MediaView: UIView {
   var playerButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    
     return button
   }()
   
@@ -61,10 +60,10 @@ class MediaView: UIView {
       playerImageView.heightAnchor.constraint(equalTo: playerImageView.widthAnchor),
       playerImageView.widthAnchor.constraint(equalToConstant: 40),
       
-      playerButton.topAnchor.constraint(equalTo: playerImageView.topAnchor),
-      playerButton.leadingAnchor.constraint(equalTo: playerImageView.leadingAnchor),
-      playerButton.trailingAnchor.constraint(equalTo: playerImageView.trailingAnchor),
-      playerButton.bottomAnchor.constraint(equalTo: playerImageView.bottomAnchor),
+      playerButton.topAnchor.constraint(equalTo: imageView.topAnchor),
+      playerButton.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+      playerButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+      playerButton.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
       
     ])
   }
