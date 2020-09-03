@@ -53,7 +53,6 @@ class ListCampaignCell: UICollectionViewCell {
   }
   
   private func setCampaignDescription(_ campaign: Campaign) -> NSAttributedString {
-    let words = campaign.payPerInstall
     let text = NSMutableAttributedString()
     
     text.append(
