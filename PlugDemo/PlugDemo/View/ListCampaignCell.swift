@@ -28,6 +28,12 @@ class ListCampaignCell: UICollectionViewCell {
     return view
   }()
   
+  var media: [Media] = [] {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = .white
@@ -42,6 +48,7 @@ class ListCampaignCell: UICollectionViewCell {
   func configure(with campaign: Campaign) {
     headerView.campaignTitleLabel.text = campaign.campaignName
     headerView.campaignDescriptionLabel.attributedText = setCampaignDescription(campaign)
+    self.media = campaign.medias
     
     CampaignService.shared.downloadImage(from: campaign.campaignIconUrl, completion: { [weak self] image in
       guard let self = self else { return }
@@ -106,11 +113,12 @@ extension ListCampaignCell {
 
 extension ListCampaignCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return media.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CampaignCell
+    cell.configure(with: media[indexPath.row])
     return cell
   }
   

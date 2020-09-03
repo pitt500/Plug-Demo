@@ -9,7 +9,7 @@ import UIKit
 
 class MediaView: UIView {
   var imageView: UIImageView = {
-    let image = UIImage(named: "tiktok_demo")!
+    let image = UIImage(named: "imagePlaceholder")!
     
     let view = UIImageView(image: image)
     view.contentMode = .center

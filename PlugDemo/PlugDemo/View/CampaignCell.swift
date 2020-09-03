@@ -58,6 +58,16 @@ class CampaignCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  func configure(with media: Media) {
+    CampaignService.shared.downloadImage(from: media.coverPhotoUrl) { [weak self] image in
+      guard let self = self else { return }
+      
+      DispatchQueue.main.async {
+        self.mediaView.imageView.image = image
+      }
+    }
+  }
+  
 }
 
 extension CampaignCell {
