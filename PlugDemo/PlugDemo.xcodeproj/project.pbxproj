@@ -127,8 +127,8 @@
 			children = (
 				B529EDFD24FDFE7500FF8FBD /* CampaignService.swift */,
 				B529EE0424FE00A900FF8FBD /* CampaignOperation.swift */,
-				B529EE0624FE028900FF8FBD /* NetworkError.swift */,
 				B5A39F752500BC34004D5D57 /* NetworkOperation.swift */,
+				B529EE0624FE028900FF8FBD /* NetworkError.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";

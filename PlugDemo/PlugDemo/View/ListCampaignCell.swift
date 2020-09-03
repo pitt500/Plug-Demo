@@ -41,6 +41,14 @@ class ListCampaignCell: UICollectionViewCell {
   
   func configure(with campaign: Campaign) {
     headerView.campaignTitleLabel.text = campaign.campaignName
+    
+    CampaignService.shared.downloadImage(from: campaign.campaignIconUrl, completion: { [weak self] image in
+      guard let self = self else { return }
+      
+      DispatchQueue.main.async {
+        self.headerView.campaignImage.image = image
+      }
+    })
   }
 }
 

@@ -8,7 +8,9 @@
 import UIKit
 
 class CampaignService: CampaignOperation {
+  static let shared = CampaignService()
   let session = URLSession.shared
+  let cache = NSCache<NSString, UIImage>()
   
   func getFeed(result: @escaping (Result<[Campaign], Error>) -> Void) {
     let url = URL(string: "https://www.plugco.in/public/take_home_sample_feed")
@@ -41,14 +43,21 @@ class CampaignService: CampaignOperation {
 
 extension CampaignService: NetworkOperation {
   func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
+    let key = NSString(string: urlString)
+    if let image = cache.object(forKey: key) {
+      completion(image)
+      return
+    }
+    
     guard let url = URL(string: urlString) else {
       completion(nil)
       return
     }
     
-    let task = session.dataTask(with: url) { (data, response, error) in
+    let task = session.dataTask(with: url) { [weak self] (data, response, error) in
       
       guard
+        let self = self,
         error == nil,
         let data = data,
         let image = UIImage(data: data)
@@ -56,7 +65,8 @@ extension CampaignService: NetworkOperation {
         completion(nil)
         return
       }
-      
+      print("loading image...")
+      self.cache.setObject(image, forKey: key)
       completion(image)
     }
     
