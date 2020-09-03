@@ -21,7 +21,7 @@ class ListCampaignCell: UICollectionViewCell {
     return collection
   }()
   
-  let headerView: UIView = {
+  let headerView: CampaignHeaderView = {
     let view = CampaignHeaderView()
 
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +39,9 @@ class ListCampaignCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  func configure(with campaign: Campaign) {
+    headerView.campaignTitleLabel.text = campaign.campaignName
+  }
 }
 
 extension ListCampaignCell {

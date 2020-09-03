@@ -10,6 +10,12 @@ import UIKit
 class ListCampaignViewController: UIViewController {
   
   var collectionView: UICollectionView!
+  var service: CampaignOperation = CampaignService()
+  var campaigns: [Campaign] = [] {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -17,15 +23,7 @@ class ListCampaignViewController: UIViewController {
     title = "PLUGS"
     navigationController?.navigationBar.prefersLargeTitles = true
     configureCollectionView()
-    
-    //    service.getFeed { result in
-    //      switch result {
-    //      case .success(let campaigns):
-    //        print(campaigns)
-    //      case .failure(let error):
-    //        print(error)
-    //      }
-    //    }
+    fillContent()
   }
   
   func configureCollectionView() {
@@ -40,17 +38,32 @@ class ListCampaignViewController: UIViewController {
     collectionView.register(ListCampaignCell.self, forCellWithReuseIdentifier: "cellContainer")
     collectionView.dataSource = self
   }
+  
+  func fillContent() {
+    service.getFeed { result in
+      
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let campaigns):
+          self.campaigns = campaigns
+        case .failure(let error):
+          print(error.localizedDescription)
+          let alert = UIAlertController(title: "Error", message: "Unable to load data", preferredStyle: .alert)
+          self.present(alert, animated: true, completion: nil)
+        }
+      }
+    }
+  }
 }
 
 extension ListCampaignViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return campaigns.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellContainer", for: indexPath) as! ListCampaignCell
+    cell.configure(with: campaigns[indexPath.row])
     return cell
   }
-  
-  
 }
