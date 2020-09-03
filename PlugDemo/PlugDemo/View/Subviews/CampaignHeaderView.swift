@@ -27,7 +27,7 @@ class CampaignHeaderView: UIView {
     return stack
   }()
   
-  private var campaignImage: UIImageView = {
+  var campaignImage: UIImageView = {
     let image = UIImage(named: "tiktok_icon")!
     
     let imageView = UIImageView(image: image)
@@ -39,7 +39,7 @@ class CampaignHeaderView: UIView {
     return imageView
   }()
   
-  private var campaignTitleLabel: UILabel = {
+  var campaignTitleLabel: UILabel = {
     let label = UILabel()
     label.text = "Yarn"
     label.font = UIFont(name: "HelveticaNeue-Bold", size: 25)!
@@ -47,7 +47,7 @@ class CampaignHeaderView: UIView {
     return label
   }()
   
-  private var campaignDescriptionLabel: UILabel = {
+  var campaignDescriptionLabel: UILabel = {
     let label = UILabel()
     let text = NSMutableAttributedString()
     
