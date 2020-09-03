@@ -29,9 +29,18 @@ class CampaignCell: UICollectionViewCell {
   
   var mediaView: MediaView = {
     let view = MediaView()
+    view.backgroundColor = .black
     view.translatesAutoresizingMaskIntoConstraints = false
     view.border(width: 1, color: UIColor.lightGray.withAlphaComponent(0.6))
     view.roundCorners(to: 6)
+    return view
+  }()
+  
+  var videoView: UIView = {
+    let view = UIView()
+    view.backgroundColor = .black
+    view.layer.opacity = 0.9//0.3
+    
     return view
   }()
   
@@ -64,6 +73,14 @@ class CampaignCell: UICollectionViewCell {
       
       DispatchQueue.main.async {
         self.mediaView.imageView.image = image
+        
+        if media.mediaType == .video {
+          self.mediaView.imageView.layer.opacity = 0.7
+          self.mediaView.playerImageView.isHidden = false
+        } else {
+          self.mediaView.imageView.layer.opacity = 1.0
+          self.mediaView.playerImageView.isHidden = true
+        }
       }
     }
   }

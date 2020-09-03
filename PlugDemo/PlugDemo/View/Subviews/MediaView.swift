@@ -17,6 +17,17 @@ class MediaView: UIView {
     return view
   }()
   
+  var playerImageView: UIImageView = {
+    let view = UIImageView()
+    view.image = UIImage(systemName: "play.fill")
+    view.contentMode = .scaleAspectFit
+    view.tintColor = .white
+    view.isHidden = true
+    view.translatesAutoresizingMaskIntoConstraints = false
+    
+    return view
+  }()
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = .white
@@ -29,12 +40,19 @@ class MediaView: UIView {
   
   private func configureView() {
     addSubview(imageView)
+    addSubview(playerImageView)
     
     NSLayoutConstraint.activate([
       topAnchor.constraint(equalTo: imageView.topAnchor),
       bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
       leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-      trailingAnchor.constraint(equalTo: imageView.trailingAnchor)
+      trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+      
+      centerYAnchor.constraint(equalTo: playerImageView.centerYAnchor),
+      centerXAnchor.constraint(equalTo: playerImageView.centerXAnchor),
+      playerImageView.heightAnchor.constraint(equalTo: playerImageView.widthAnchor),
+      playerImageView.widthAnchor.constraint(equalToConstant: 40)
+      
     ])
   }
 }
