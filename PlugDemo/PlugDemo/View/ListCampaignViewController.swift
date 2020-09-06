@@ -11,6 +11,7 @@ class ListCampaignViewController: UIViewController {
   
   var collectionView: UICollectionView!
   var service: CampaignOperation = CampaignService()
+  let transition = PopAnimator()
   var campaigns: [Campaign] = [] {
     didSet {
       collectionView.reloadData()
@@ -72,6 +73,21 @@ extension ListCampaignViewController: CampaignInteraction {
   func didTapMedia(_ media: Media) {
     let vc = CampaignMediaDetailViewController(media: media)
     vc.modalPresentationStyle = .fullScreen
+    vc.transitioningDelegate = self
     present(vc, animated: true, completion: nil)
+  }
+}
+
+extension ListCampaignViewController: UIViewControllerTransitioningDelegate {
+  func animationController(
+    forPresented presented: UIViewController,
+    presenting: UIViewController,
+    source: UIViewController
+  ) -> UIViewControllerAnimatedTransitioning? {
+    return transition
+  }
+  
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    return nil
   }
 }
