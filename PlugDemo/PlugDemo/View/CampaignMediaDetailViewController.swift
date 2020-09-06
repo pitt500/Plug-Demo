@@ -11,6 +11,15 @@ import AVKit
 
 class CampaignMediaDetailViewController: UIViewController {
   var media: Media!
+  
+  var mediaImageView: UIImageView = {
+    let view = UIImageView()
+    view.contentMode = .scaleAspectFit
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+  
+  
   var activityIndicator: UIActivityIndicatorView = {
     let view = UIActivityIndicatorView(style: .large)
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -30,6 +39,7 @@ class CampaignMediaDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .black
+    configureMediaImageView()
     configureActivityIndicator()
   }
   
@@ -68,6 +78,25 @@ class CampaignMediaDetailViewController: UIViewController {
         player.play()
       }
     }
+  }
+  
+  func configureMediaImageView() {
+    view.addSubview(mediaImageView)
+    
+    CampaignService.shared.downloadImage(from: media.coverPhotoUrl) { [weak self] image in
+      guard let self = self else { return }
+      
+      DispatchQueue.main.async {
+        self.mediaImageView.image = image
+      }
+    }
+    
+    NSLayoutConstraint.activate([
+      view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: mediaImageView.topAnchor),
+      view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: mediaImageView.bottomAnchor),
+      view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: mediaImageView.trailingAnchor),
+      view.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: mediaImageView.leadingAnchor)
+    ])
   }
   
   func configureActivityIndicator() {
