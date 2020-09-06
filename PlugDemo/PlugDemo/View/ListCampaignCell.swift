@@ -16,7 +16,7 @@ class ListCampaignCell: UICollectionViewCell {
     layout.scrollDirection = .horizontal
     
     let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collection.backgroundColor = .white
+    collection.backgroundColor = .systemBackground
     collection.translatesAutoresizingMaskIntoConstraints = false
     return collection
   }()
@@ -38,7 +38,7 @@ class ListCampaignCell: UICollectionViewCell {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    backgroundColor = .white
+    backgroundColor = .systemBackground
     setConstraints()
     configureCollectionView()
   }
