@@ -19,7 +19,7 @@ class ListCampaignViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
+    view.backgroundColor = .systemBackground
     title = "PLUGS"
     navigationController?.navigationBar.prefersLargeTitles = true
     configureCollectionView()
@@ -34,7 +34,7 @@ class ListCampaignViewController: UIViewController {
     
     collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
     view.addSubview(collectionView)
-    collectionView.backgroundColor = .white
+    collectionView.backgroundColor = .systemBackground
     collectionView.register(ListCampaignCell.self, forCellWithReuseIdentifier: "cellContainer")
     collectionView.dataSource = self
   }
@@ -70,7 +70,8 @@ extension ListCampaignViewController: UICollectionViewDataSource {
 
 extension ListCampaignViewController: CampaignInteraction {
   func didTapMedia(_ media: Media) {
-    print(media.downloadUrl)
-    present(CampaignMediaDetailViewController(media: media), animated: true, completion: nil)
+    let vc = CampaignMediaDetailViewController(media: media)
+    vc.modalPresentationStyle = .fullScreen
+    present(vc, animated: true, completion: nil)
   }
 }
