@@ -14,8 +14,16 @@ struct Media: Codable {
     case photo
   }
   
+  var id = UUID().uuidString
   let coverPhotoUrl: String
   let downloadUrl: String
   let trackingLink: String
   let mediaType: Format
+  
+  private enum CodingKeys: String, CodingKey {
+    case coverPhotoUrl
+    case downloadUrl
+    case trackingLink
+    case mediaType
+  }
 }
