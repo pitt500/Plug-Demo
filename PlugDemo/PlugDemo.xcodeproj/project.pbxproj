@@ -25,6 +25,7 @@
 		B529EE0724FE028900FF8FBD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EE0624FE028900FF8FBD /* NetworkError.swift */; };
 		B529EE0924FE045A00FF8FBD /* CampaignResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EE0824FE045A00FF8FBD /* CampaignResponse.swift */; };
 		B529EE0C24FE075B00FF8FBD /* CampaignCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529EE0B24FE075B00FF8FBD /* CampaignCell.swift */; };
+		B57258322504CADF00500732 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57258312504CADF00500732 /* PopAnimator.swift */; };
 		B5A39F762500BC34004D5D57 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A39F752500BC34004D5D57 /* NetworkOperation.swift */; };
 		B5A39F782500D710004D5D57 /* CampaignMediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A39F772500D710004D5D57 /* CampaignMediaDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		B529EE0624FE028900FF8FBD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B529EE0824FE045A00FF8FBD /* CampaignResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignResponse.swift; sourceTree = "<group>"; };
 		B529EE0B24FE075B00FF8FBD /* CampaignCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignCell.swift; sourceTree = "<group>"; };
+		B57258312504CADF00500732 /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 		B5A39F752500BC34004D5D57 /* NetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 		B5A39F772500D710004D5D57 /* CampaignMediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignMediaDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +150,7 @@
 		B529EE0A24FE072500FF8FBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B57258302504CAC800500732 /* Animations */,
 				B51966C624FF666D006ADB93 /* Subviews */,
 				B529EE0B24FE075B00FF8FBD /* CampaignCell.swift */,
 				B507602C24FE1DE000D873C9 /* ListCampaignViewController.swift */,
@@ -155,6 +158,14 @@
 				B5A39F772500D710004D5D57 /* CampaignMediaDetailViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B57258302504CAC800500732 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				B57258312504CADF00500732 /* PopAnimator.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +245,7 @@
 				B51966D224FF7BCC006ADB93 /* MediaView.swift in Sources */,
 				B5A39F782500D710004D5D57 /* CampaignMediaDetailViewController.swift in Sources */,
 				B529EDFE24FDFE7500FF8FBD /* CampaignService.swift in Sources */,
+				B57258322504CADF00500732 /* PopAnimator.swift in Sources */,
 				B507602D24FE1DE000D873C9 /* ListCampaignViewController.swift in Sources */,
 				B529EE0324FDFEA400FF8FBD /* Media.swift in Sources */,
 				B529EDE924FDFC6600FF8FBD /* AppDelegate.swift in Sources */,
