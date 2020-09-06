@@ -46,10 +46,19 @@ class CampaignMediaDetailViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    playVideo()
+    downloadVideo()
   }
   
-  func playVideo() {
+  func downloadVideo() {
+    var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+    documentsPath.append("\(self.media.id).MOV")
+    let destinationPath = documentsPath.joined()
+    
+    if FileManager.default.fileExists(atPath: destinationPath) {
+      let fileUrl = URL(fileURLWithPath: destinationPath)
+      playVideo(withFileUrl: fileUrl)
+      return
+    }
     
     guard let url = URL(string: media.downloadUrl) else {
       return
@@ -59,25 +68,24 @@ class CampaignMediaDetailViewController: UIViewController {
       guard let self = self else { return }
       
       let videoData = try? Data(contentsOf: url)
-      var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-      documentsPath.append("/filename.MOV")
-      let destinationPath = documentsPath.joined()
-      
       FileManager.default.createFile(atPath: destinationPath, contents: videoData, attributes: nil)
       
       let fileUrl = URL(fileURLWithPath: destinationPath)
-      
-      DispatchQueue.main.async {
-        let player = AVPlayer(url: fileUrl)
-        let controller = AVPlayerViewController()
-        controller.player = player
+      self.playVideo(withFileUrl: fileUrl)
+    }
+  }
+  
+  func playVideo(withFileUrl fileUrl: URL) {
+    DispatchQueue.main.async {
+      let player = AVPlayer(url: fileUrl)
+      let controller = AVPlayerViewController()
+      controller.player = player
 
-        self.view.addSubview(controller.view)
-        self.addChild(controller)
-        
-        self.activityIndicator.stopAnimating()
-        player.play()
-      }
+      self.view.addSubview(controller.view)
+      self.addChild(controller)
+      
+      self.activityIndicator.stopAnimating()
+      player.play()
     }
   }
   
