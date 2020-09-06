@@ -16,6 +16,7 @@ class CampaignMediaDetailViewController: UIViewController {
     let view = UIImageView()
     view.contentMode = .scaleAspectFit
     view.translatesAutoresizingMaskIntoConstraints = false
+    view.alpha = 0.7
     return view
   }()
   
