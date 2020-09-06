@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 class CampaignMediaDetailViewController: UIViewController {
   var media: Media!
-  
-  var label: UILabel = {
-    let l = UILabel()
-    l.numberOfLines = 0
-    l.translatesAutoresizingMaskIntoConstraints = false
-    return l
+  var activityIndicator: UIActivityIndicatorView = {
+    let view = UIActivityIndicatorView(style: .large)
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.color = .white
+    return view
   }()
   
   init(media: Media) {
@@ -28,20 +29,58 @@ class CampaignMediaDetailViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
-    configureLabel()
-    label.text = media.downloadUrl
+    view.backgroundColor = .black
+    configureActivityIndicator()
   }
   
-  func configureLabel() {
-    view.addSubview(label)
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    playVideo()
+  }
+  
+  func playVideo() {
+    
+    guard let url = URL(string: media.downloadUrl) else {
+      return
+    }
+    
+    DispatchQueue.global().async { [weak self] in
+      guard let self = self else { return }
+      
+      let videoData = try? Data(contentsOf: url)
+      var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+      documentsPath.append("/filename.MOV")
+      let destinationPath = documentsPath.joined()
+      
+      FileManager.default.createFile(atPath: destinationPath, contents: videoData, attributes: nil)
+      
+      let fileUrl = URL(fileURLWithPath: destinationPath)
+      
+      DispatchQueue.main.async {
+        let player = AVPlayer(url: fileUrl)
+        let controller = AVPlayerViewController()
+        controller.player = player
+
+        self.view.addSubview(controller.view)
+        self.addChild(controller)
+        
+        self.activityIndicator.stopAnimating()
+        player.play()
+      }
+    }
+  }
+  
+  func configureActivityIndicator() {
+    view.addSubview(activityIndicator)
     
     NSLayoutConstraint.activate([
-      view.centerYAnchor.constraint(equalTo: label.centerYAnchor),
-      view.centerXAnchor.constraint(equalTo: label.centerXAnchor),
+      view.centerYAnchor.constraint(equalTo: activityIndicator.centerYAnchor),
+      view.centerXAnchor.constraint(equalTo: activityIndicator.centerXAnchor),
       
-      label.heightAnchor.constraint(equalToConstant: 300),
-      label.widthAnchor.constraint(equalToConstant: 200)
+      activityIndicator.heightAnchor.constraint(equalToConstant: 200),
+      activityIndicator.widthAnchor.constraint(equalToConstant: 200)
     ])
+    
+    activityIndicator.startAnimating()
   }
 }
