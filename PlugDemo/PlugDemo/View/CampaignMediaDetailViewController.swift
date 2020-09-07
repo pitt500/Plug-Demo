@@ -142,6 +142,15 @@ class CampaignMediaDetailViewController: UIViewController {
       guard let self = self else { return }
       
       let player = AVPlayer(url: fileUrl)
+      player.actionAtItemEnd = .none
+      
+      NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(self.playerDidReachEnd(notification:)),
+        name: .AVPlayerItemDidPlayToEndTime,
+        object: player.currentItem
+      )
+      
       let controller = AVPlayerViewController()
       controller.showsPlaybackControls = false
       controller.player = player
@@ -149,6 +158,7 @@ class CampaignMediaDetailViewController: UIViewController {
       self.view.addSubview(controller.view)
       self.addChild(controller)
       self.view.bringSubviewToFront(self.playPauseView)
+      self.playPauseView.avPlayer = player
       
       self.activityIndicator.stopAnimating()
       player.play()
@@ -200,5 +210,11 @@ class CampaignMediaDetailViewController: UIViewController {
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleControls))
     view.addGestureRecognizer(tapGesture)
+  }
+  
+  @objc func playerDidReachEnd(notification: Notification) {
+    if let playerItem = notification.object as? AVPlayerItem {
+      playerItem.seek(to: .zero, completionHandler: nil)
+    }
   }
 }
