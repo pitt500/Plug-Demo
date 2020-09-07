@@ -8,7 +8,7 @@
 import UIKit
 
 class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-  let duration = 0.8
+  let duration = 0.3
   var presenting = true
   var originFrame = CGRect.zero
   
@@ -48,9 +48,9 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     UIView.animate(
       withDuration: duration,
-      delay: 0.0,
-      usingSpringWithDamping: 0.5,
-      initialSpringVelocity: 0.0,
+//      delay: 0.0,
+//      usingSpringWithDamping: 0.5,
+//      initialSpringVelocity: 0.5,
       animations: {
         videoView.transform = self.presenting ? .identity : scaleTransform
         videoView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)

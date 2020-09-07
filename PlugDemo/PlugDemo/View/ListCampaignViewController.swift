@@ -109,6 +109,7 @@ extension ListCampaignViewController: UIViewControllerTransitioningDelegate {
   }
   
   func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    return nil
+    transition.presenting = false
+    return transition
   }
 }
