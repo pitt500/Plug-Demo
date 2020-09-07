@@ -213,8 +213,14 @@ class CampaignMediaDetailViewController: UIViewController {
   }
   
   @objc func playerDidReachEnd(notification: Notification) {
-    if let playerItem = notification.object as? AVPlayerItem {
-      playerItem.seek(to: .zero, completionHandler: nil)
+    guard let playerItem = notification.object as? AVPlayerItem else {
+      return
     }
+    
+    restartVideo(playerItem)
+  }
+  
+  func restartVideo(_ playerItem: AVPlayerItem) {
+    playerItem.seek(to: .zero, completionHandler: nil)
   }
 }
