@@ -12,6 +12,7 @@ class ListCampaignViewController: UIViewController {
   var collectionView: UICollectionView!
   var service: CampaignOperation = CampaignService()
   let transition = PopAnimator()
+  weak var selectedCell: CampaignCell?
   var campaigns: [Campaign] = [] {
     didSet {
       collectionView.reloadData()
@@ -70,7 +71,8 @@ extension ListCampaignViewController: UICollectionViewDataSource {
 }
 
 extension ListCampaignViewController: CampaignInteraction {
-  func didTapMedia(_ media: Media) {
+  func didTapMedia(_ media: Media, selectedCell: CampaignCell) {
+    self.selectedCell = selectedCell
     let vc = CampaignMediaDetailViewController(media: media)
     vc.modalPresentationStyle = .fullScreen
     vc.transitioningDelegate = self
@@ -84,6 +86,25 @@ extension ListCampaignViewController: UIViewControllerTransitioningDelegate {
     presenting: UIViewController,
     source: UIViewController
   ) -> UIViewControllerAnimatedTransitioning? {
+    
+    guard
+      let selectedCell = self.selectedCell,
+      let selectedCellSuperView = selectedCell.superview
+    else {
+      return nil
+    }
+    
+
+    transition.originFrame = selectedCellSuperView.convert(selectedCell.frame, to: nil)
+    transition.originFrame = CGRect(
+      x: transition.originFrame.origin.x,
+      y: transition.originFrame.origin.y,
+      width: transition.originFrame.size.width,
+      height: transition.originFrame.size.height - 40
+    )
+
+    transition.presenting = true
+    
     return transition
   }
   

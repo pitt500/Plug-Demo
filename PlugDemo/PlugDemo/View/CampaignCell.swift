@@ -58,7 +58,6 @@ class CampaignCell: UICollectionViewCell {
     return view
   }
   
-  weak var delegate: CampaignInteraction?
   var media: Media!
   
   override init(frame: CGRect) {
@@ -70,11 +69,8 @@ class CampaignCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func configure(with media: Media, delegate: CampaignInteraction?) {
-    self.delegate = delegate
+  func configure(with media: Media) {
     self.media = media
-    
-    self.mediaView.playerButton.addTarget(self, action: #selector(CampaignCell.buttonTapped), for: .touchUpInside)
     
     CampaignService.shared.downloadImage(from: media.coverPhotoUrl) { [weak self] image in
       guard let self = self else { return }
@@ -92,11 +88,6 @@ class CampaignCell: UICollectionViewCell {
       }
     }
   }
-  
-  @objc func buttonTapped() {
-    delegate?.didTapMedia(media)
-  }
-  
 }
 
 extension CampaignCell {
@@ -124,5 +115,5 @@ extension CampaignCell {
 }
 
 protocol CampaignInteraction: AnyObject {
-  func didTapMedia(_ media: Media)
+  func didTapMedia(_ media: Media, selectedCell: CampaignCell)
 }

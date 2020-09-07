@@ -50,7 +50,7 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
       withDuration: duration,
       delay: 0.0,
       usingSpringWithDamping: 0.5,
-      initialSpringVelocity: 0.2,
+      initialSpringVelocity: 0.0,
       animations: {
         videoView.transform = self.presenting ? .identity : scaleTransform
         videoView.center = CGPoint(x: finalFrame.midX, y: finalFrame.midY)

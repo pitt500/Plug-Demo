@@ -110,6 +110,7 @@ extension ListCampaignCell {
   
   func configureCollectionView() {
     collectionView.dataSource = self
+    collectionView.delegate = self
     collectionView.register(CampaignCell.self, forCellWithReuseIdentifier: "cell")
   }
 }
@@ -121,9 +122,15 @@ extension ListCampaignCell: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CampaignCell
-    cell.configure(with: media[indexPath.row], delegate: delegate)
+    cell.configure(with: media[indexPath.row])
     return cell
   }
-  
-  
+}
+
+extension ListCampaignCell: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let cell = collectionView.cellForItem(at: indexPath) as! CampaignCell
+    
+    delegate?.didTapMedia(media[indexPath.row], selectedCell: cell)
+  }
 }
