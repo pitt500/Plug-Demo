@@ -74,7 +74,7 @@ extension ListCampaignViewController: CampaignInteraction {
   func didTapMedia(_ media: Media, selectedCell: CampaignCell) {
     self.selectedCell = selectedCell
     let vc = CampaignMediaDetailViewController(media: media)
-    vc.modalPresentationStyle = .fullScreen
+    vc.modalPresentationStyle = .overCurrentContext
     vc.transitioningDelegate = self
     present(vc, animated: true, completion: nil)
   }

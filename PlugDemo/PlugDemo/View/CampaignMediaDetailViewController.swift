@@ -11,6 +11,7 @@ import AVKit
 
 class CampaignMediaDetailViewController: UIViewController {
   var media: Media!
+  var viewTranslation = CGPoint(x: 0, y: 0)
   
   var mediaImageView: UIImageView = {
     let view = UIImageView()
@@ -42,11 +43,48 @@ class CampaignMediaDetailViewController: UIViewController {
     view.backgroundColor = .black
     configureMediaImageView()
     configureActivityIndicator()
+    view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     downloadVideo()
+  }
+  
+  @objc func handleDismiss(sender: UIPanGestureRecognizer) {
+    switch sender.state {
+    case .changed:
+      viewTranslation = sender.translation(in: view)
+      UIView.animate(
+        withDuration: 0.5,
+        delay: 0,
+        usingSpringWithDamping: 0.7,
+        initialSpringVelocity: 1,
+        options: .curveEaseOut,
+        animations: {
+          self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+        },
+        completion: nil
+      )
+    case .ended:
+      if viewTranslation.y < 200 {
+        UIView.animate(
+          withDuration: 0.5,
+          delay: 0,
+          usingSpringWithDamping: 0.7,
+          initialSpringVelocity: 1,
+          options: .curveEaseOut,
+          animations: {
+            self.view.transform = .identity
+          },
+          completion: nil
+        )
+      } else {
+        dismiss(animated: true, completion: nil)
+      }
+    default:
+      break
+    }
   }
   
   func downloadVideo() {
@@ -81,6 +119,7 @@ class CampaignMediaDetailViewController: UIViewController {
       
       let player = AVPlayer(url: fileUrl)
       let controller = AVPlayerViewController()
+      controller.showsPlaybackControls = false
       controller.player = player
 
       self.view.addSubview(controller.view)
