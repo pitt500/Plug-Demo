@@ -38,9 +38,11 @@ class CampaignMediaDetailViewController: UIViewController {
   
   var isShowingControls = false {
     didSet {
-      animatePlayPause()
+      animateControlsWithTimer()
     }
   }
+  
+  var timer: Timer?
   
   init(media: Media) {
     super.init(nibName: nil, bundle: nil)
@@ -102,6 +104,19 @@ class CampaignMediaDetailViewController: UIViewController {
   
   @objc func handleControls(sender: UITapGestureRecognizer) {
     isShowingControls.toggle()
+  }
+  
+  func animateControlsWithTimer() {
+    animatePlayPause()
+    
+    if isShowingControls {
+      timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
+        self.isShowingControls = false
+      }
+      
+    } else {
+      timer?.invalidate()
+    }
   }
   
   func animatePlayPause() {
