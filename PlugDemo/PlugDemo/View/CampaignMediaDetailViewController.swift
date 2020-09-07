@@ -76,7 +76,9 @@ class CampaignMediaDetailViewController: UIViewController {
   }
   
   func playVideo(withFileUrl fileUrl: URL) {
-    DispatchQueue.main.async {
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      
       let player = AVPlayer(url: fileUrl)
       let controller = AVPlayerViewController()
       controller.player = player
