@@ -55,7 +55,7 @@ class PlayPauseView: UIView {
   
   var showPause = true {
     didSet {
-      playButton.setImage(showPause ? pauseImage : playImage , for: .normal)
+      didPressPlayButton()
     }
   }
   
@@ -96,5 +96,15 @@ class PlayPauseView: UIView {
   
   var isPlaying: Bool {
     return avPlayer?.rate != 0 && avPlayer?.error == nil
+  }
+  
+  func didPressPlayButton() {
+    if showPause {
+      avPlayer?.play()
+      playButton.setImage(pauseImage, for: .normal)
+    } else {
+      avPlayer?.pause()
+      playButton.setImage(playImage, for: .normal)
+    }
   }
 }
