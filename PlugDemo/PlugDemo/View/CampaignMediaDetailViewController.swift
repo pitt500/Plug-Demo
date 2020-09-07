@@ -21,6 +21,13 @@ class CampaignMediaDetailViewController: UIViewController {
     return view
   }()
   
+  var playPauseView: PlayPauseView = {
+    let view = PlayPauseView()
+    view.alpha = 0.0
+    view.translatesAutoresizingMaskIntoConstraints = false
+    
+    return view
+  }()
   
   var activityIndicator: UIActivityIndicatorView = {
     let view = UIActivityIndicatorView(style: .large)
@@ -28,6 +35,12 @@ class CampaignMediaDetailViewController: UIViewController {
     view.color = .white
     return view
   }()
+  
+  var isShowingControls = false {
+    didSet {
+      animatePlayPause()
+    }
+  }
   
   init(media: Media) {
     super.init(nibName: nil, bundle: nil)
@@ -43,7 +56,7 @@ class CampaignMediaDetailViewController: UIViewController {
     view.backgroundColor = .black
     configureMediaImageView()
     configureActivityIndicator()
-    view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
+    configureGestures()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -87,6 +100,17 @@ class CampaignMediaDetailViewController: UIViewController {
     }
   }
   
+  @objc func handleControls(sender: UITapGestureRecognizer) {
+    isShowingControls.toggle()
+  }
+  
+  func animatePlayPause() {
+    UIView.animate(withDuration: 0.3) { [weak self] in
+      guard let self = self else { return }
+      self.playPauseView.alpha = self.isShowingControls ? 1.0 : 0.0
+    }
+  }
+  
   func downloadVideo() {
     var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
     documentsPath.append("\(self.media.id).MOV")
@@ -124,6 +148,7 @@ class CampaignMediaDetailViewController: UIViewController {
 
       self.view.addSubview(controller.view)
       self.addChild(controller)
+      self.view.bringSubviewToFront(self.playPauseView)
       
       self.activityIndicator.stopAnimating()
       player.play()
@@ -132,6 +157,7 @@ class CampaignMediaDetailViewController: UIViewController {
   
   func configureMediaImageView() {
     view.addSubview(mediaImageView)
+    view.addSubview(playPauseView)
     
     CampaignService.shared.downloadImage(from: media.coverPhotoUrl) { [weak self] image in
       guard let self = self else { return }
@@ -145,7 +171,12 @@ class CampaignMediaDetailViewController: UIViewController {
       view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: mediaImageView.topAnchor),
       view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: mediaImageView.bottomAnchor),
       view.safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: mediaImageView.trailingAnchor),
-      view.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: mediaImageView.leadingAnchor)
+      view.safeAreaLayoutGuide.leadingAnchor.constraint(equalTo: mediaImageView.leadingAnchor),
+      
+      view.topAnchor.constraint(equalTo: playPauseView.topAnchor),
+      view.bottomAnchor.constraint(equalTo: playPauseView.bottomAnchor),
+      view.trailingAnchor.constraint(equalTo: playPauseView.trailingAnchor),
+      view.leadingAnchor.constraint(equalTo: playPauseView.leadingAnchor)
     ])
   }
   
@@ -161,5 +192,13 @@ class CampaignMediaDetailViewController: UIViewController {
     ])
     
     activityIndicator.startAnimating()
+  }
+  
+  func configureGestures() {
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleDismiss))
+    view.addGestureRecognizer(panGesture)
+    
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleControls))
+    view.addGestureRecognizer(tapGesture)
   }
 }
