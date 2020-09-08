@@ -53,7 +53,7 @@ class PlayPauseView: UIView {
     return button
   }()
   
-  var showPause = true {
+  var isShowingPause = true {
     didSet {
       didPressPlayButton()
     }
@@ -91,18 +91,16 @@ class PlayPauseView: UIView {
   }
   
   @objc func didPressButton(_ sender: UIButton) {
-    showPause.toggle()
-  }
-  
-  var isPlaying: Bool {
-    return avPlayer?.rate != 0 && avPlayer?.error == nil
+    isShowingPause.toggle()
   }
   
   func didPressPlayButton() {
-    if showPause {
+    if isShowingPause {
+      NotificationCenter.default.post(name: PlayerNotification.dismissAfterTime, object: nil)
       avPlayer?.play()
       playButton.setImage(pauseImage, for: .normal)
     } else {
+      NotificationCenter.default.post(name: PlayerNotification.invalidateTimer, object: nil)
       avPlayer?.pause()
       playButton.setImage(playImage, for: .normal)
     }
