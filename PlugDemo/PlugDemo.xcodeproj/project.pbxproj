@@ -29,6 +29,7 @@
 		B57258342505F8A200500732 /* PlayPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57258332505F8A200500732 /* PlayPauseView.swift */; };
 		B5A39F762500BC34004D5D57 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A39F752500BC34004D5D57 /* NetworkOperation.swift */; };
 		B5A39F782500D710004D5D57 /* CampaignMediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A39F772500D710004D5D57 /* CampaignMediaDetailViewController.swift */; };
+		B5E48FF6250700DD00239E14 /* PlayerNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E48FF5250700DD00239E14 /* PlayerNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		B57258332505F8A200500732 /* PlayPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseView.swift; sourceTree = "<group>"; };
 		B5A39F752500BC34004D5D57 /* NetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 		B5A39F772500D710004D5D57 /* CampaignMediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignMediaDetailViewController.swift; sourceTree = "<group>"; };
+		B5E48FF5250700DD00239E14 /* PlayerNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNotification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		B529EDE724FDFC6600FF8FBD /* PlugDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B5E48FF4250700CB00239E14 /* Constants */,
 				B51966C924FF70D5006ADB93 /* Extensions */,
 				B529EE0A24FE072500FF8FBD /* View */,
 				B529EDFF24FDFE7900FF8FBD /* Model */,
@@ -169,6 +172,14 @@
 				B57258312504CADF00500732 /* PopAnimator.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		B5E48FF4250700CB00239E14 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				B5E48FF5250700DD00239E14 /* PlayerNotification.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 				B529EE0724FE028900FF8FBD /* NetworkError.swift in Sources */,
 				B529EE0C24FE075B00FF8FBD /* CampaignCell.swift in Sources */,
 				B529EE0924FE045A00FF8FBD /* CampaignResponse.swift in Sources */,
+				B5E48FF6250700DD00239E14 /* PlayerNotification.swift in Sources */,
 				B51966D224FF7BCC006ADB93 /* MediaView.swift in Sources */,
 				B5A39F782500D710004D5D57 /* CampaignMediaDetailViewController.swift in Sources */,
 				B529EDFE24FDFE7500FF8FBD /* CampaignService.swift in Sources */,
