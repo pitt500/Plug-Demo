@@ -87,7 +87,7 @@ class CampaignMediaDetailViewController: UIViewController {
         completion: nil
       )
     case .ended:
-      if viewTranslation.y < 200 {
+      if viewTranslation.y < 100 && viewTranslation.y > -100 {
         UIView.animate(
           withDuration: 0.5,
           delay: 0,
