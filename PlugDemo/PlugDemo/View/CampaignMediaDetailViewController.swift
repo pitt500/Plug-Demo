@@ -59,6 +59,11 @@ class CampaignMediaDetailViewController: UIViewController {
     configureMediaImageView()
     configureActivityIndicator()
     configureGestures()
+    configureObservers()
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -110,13 +115,24 @@ class CampaignMediaDetailViewController: UIViewController {
     animatePlayPause()
     
     if isShowingControls {
-      timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
-        self.isShowingControls = false
+      if playPauseView.isShowingPause {
+        NotificationCenter.default.post(name: PlayerNotification.dismissAfterTime, object: nil)
+      } else {
+        removeTimer()
       }
-      
     } else {
-      timer?.invalidate()
+      removeTimer()
     }
+  }
+  
+  @objc func dismissPlayer(notification: Notification) {
+    timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
+      self.isShowingControls = false
+    }
+  }
+  
+  @objc func removeTimer() {
+    timer?.invalidate()
   }
   
   func animatePlayPause() {
@@ -128,7 +144,7 @@ class CampaignMediaDetailViewController: UIViewController {
   
   func downloadVideo() {
     var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-    documentsPath.append("\(self.media.id).MOV")
+    documentsPath.append("/\(self.media.id).MOV")
     let destinationPath = documentsPath.joined()
     
     if FileManager.default.fileExists(atPath: destinationPath) {
@@ -225,6 +241,22 @@ class CampaignMediaDetailViewController: UIViewController {
     
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleControls))
     view.addGestureRecognizer(tapGesture)
+  }
+  
+  func configureObservers() {
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(dismissPlayer(notification:)),
+      name: PlayerNotification.dismissAfterTime,
+      object: nil
+    )
+    
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(removeTimer),
+      name: PlayerNotification.invalidateTimer,
+      object: nil
+    )
   }
   
   @objc func playerDidReachEnd(notification: Notification) {
